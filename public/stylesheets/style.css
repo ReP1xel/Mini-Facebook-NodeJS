@@ -1,0 +1,107 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+* {
+  margin:0px;
+  padding:0px;
+  box-sizing:border-box;
+}
+
+#sidebar {
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:200px;
+  height:100%;
+  background:#151719;
+  transition:all 300ms linear;
+}
+#sidebar.active {
+  left:-200px;
+}
+#sidebar .toggle-btn {
+  position:absolute;
+  left:220px;
+  top:10px;
+}
+#sidebar .toggle-btn span {
+  display:block;
+  width:30px;
+  height:5px;
+  background:#151719;
+  margin:5px 0px;
+  cursor:pointer;
+}
+#sidebar div.list div.item {
+  padding:15px 10px;
+  border-bottom:1px solid #444;
+  color:#fcfcfc;
+  text-transform:uppercase;
+  font-size:12px;
+}
+
+#sidebar div.list div.item a{
+  color:#fcfcfc;
+  text-decoration: none;
+}
+.img-sm{
+  width: 50px;
+  height: 50px;
+}
+.img-sm img{
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    border-radius: 100rem;
+}
+.post-body{
+  width: 100%;
+}
+.img-around{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.img-around iframe{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 6px;
+}
+.img-around img{
+  max-width: 100%;
+}
+.img-lg{
+  width: 160px;
+  height: 160px;
+}
+.img-lg img{
+  max-width: 100%;
+  min-width: 100%;
+  max-height: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  border-radius: 100rem;
+}
+.f-1{
+  flex:1;
+}
+.time-create{
+  font-size: 12px;
+}
+.cate-list{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+.cate-list .card-item:hover{
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}

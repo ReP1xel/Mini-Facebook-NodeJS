@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    {{> nav_st}}
+
+    <div id="main" class=" my-5">
+        <div class="row">
+            <div class="col-6 mx-auto">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>THÔNG BÁO MỚI</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each notis}}
+                        <tr>
+                            <td>
+                                {{this.title}}
+                            </td>
+                            <td class="text-right">
+                                <a href="/student/noti-detail/{{this._id}}" class="btn btn-primary btn-sm">Xem</a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                <div class="d-flex">
+                    {{{paging notis cate}}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

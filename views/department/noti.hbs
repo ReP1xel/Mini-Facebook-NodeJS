@@ -1,0 +1,152 @@
+<div class="container-fluid">
+    {{> nav_de}}
+
+    <div id="main" class="">
+        <div class="row">
+            <div class="col-12">
+                <button type="button" class="btn btn-light border mb-3" data-toggle="modal" data-target="#status">
+                    <i class="fas fa-folder-plus"></i> Tạo thông báo mới
+                </button>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>THÔNG BÁO MỚI</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each notis}}
+                        <tr>
+                            <td>
+                                {{this.title}}
+                            </td>
+                            <td class="text-right">
+                                <button class="btn btn-sm btn-success view" data-title="{{this.title}}"
+                                    data-content="{{this.content}}" data-cate="{{this.category}}"
+                                    data-time="{{this.date}}" data-toggle="modal" data-target="#view_noti">View</button>
+                                <button class="btn btn-sm btn-primary edit" data-toggle="modal" data-target="#edit_noti"
+                                    data-title="{{this.title}}" data-content="{{this.content}}"
+                                    data-cate="{{this.category}}" data-id="{{this._id}}">Edit</button>
+                                <button class="btn btn-sm btn-danger dele" data-id="{{this._id}}" data-toggle="modal"
+                                    data-target="#dele_noti">Delete</button>
+                            </td>
+                        </tr>
+                        {{/each}}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <form action="/noti" method="POST">
+        <div class="modal fade" id="status">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Tạo thông báo </h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <textarea type="text" placeholder="Tiêu đề" value="" id="status" class="form-control mb-3"
+                            name="title" required></textarea>
+                        <textarea type="text" placeholder="Nội dung" value="" id="status" rows="10" cols="30"
+                            class="form-control" name="content" required></textarea>
+                        <label for="">Chuyên mục</label>
+                        <select id="" name="category" class="form-control" required>
+                            <option value="">--Choose--</option>
+                            {{#each my_cate}}
+                            <option value="{{this.id}}">{{this.title}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" onclick="create_status()">Đăng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    {{!-- sua --}}
+    <form action="/noti/edit" method="post">
+        <div class="modal fade" id="edit_noti" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Sửa thông báo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="id_edit" name="id">
+                        <textarea type="text" placeholder="Tiêu đề" value="" id="title_edit" class="form-control mb-3"
+                            name="title" required></textarea>
+                        <textarea type="text" placeholder="Nội dung" value="" id="content_edit" rows="10" cols="30"
+                            class="form-control" name="content" required></textarea>
+                        <label for="">Chuyên mục</label>
+                        <select id="" name="category" class="form-control" required>
+                            <option value="" id="cate_edit">--Choose--</option>
+                            {{#each my_cate}}
+                            <option value="{{this.id}}">{{this.title}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    {{!-- xem --}}
+    <div class="modal fade" id="view_noti" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Notification</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="view">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{!-- xoa --}}
+    <div class="modal fade" id="dele_noti" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete notification</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a href="#" id="delete" type="button" class="btn btn-danger">Yes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        view_noti()
+        delete_noti()
+        edit_noti()
+    </script>

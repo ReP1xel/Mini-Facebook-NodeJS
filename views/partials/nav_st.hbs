@@ -1,0 +1,32 @@
+<nav class="navbar-expand-lg navbar navbar-default navbar-static-top navbar-light bg-light">
+    <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Hello
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/login">Đăng xuất</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                VI
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item">EN</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/student/home">Trang chủ <span class="sr-only">(current)</span></a>
+        </li>
+    </ul>
+</nav>
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+    <a href="/student/home" class="w3-bar-item w3-button">Trang chủ</a>
+    <a href="/student/me" class="w3-bar-item w3-button">Trang cá nhân</a>
+    <a href="/student/noti" class="w3-bar-item w3-button">Thông báo</a>
+    <a href="/student/noti-cate" class="w3-bar-item w3-button">Phân loại thông báo</a>
+    {{!-- <a href="#" class="w3-bar-item w3-button">Cổng thông tin</a> --}}
+    <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Close &times;</button>
+</div>

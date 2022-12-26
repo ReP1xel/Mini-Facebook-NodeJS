@@ -1,0 +1,149 @@
+<div class="container-fluid">
+    {{> nav_ad}}
+
+    <div id="main" class="mx-auto my-5">
+        <div class="row">
+            <div class="col-6 mx-auto">
+                <button type="button" class="btn btn-light border" data-toggle="modal" data-target="#create_post_modal">
+                    <i class="fas fa-folder-plus"></i> Bạn đang nghĩ gì?
+                </button>
+                <div id="posts" class="mt-4">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{!-- them --}}
+<form action="" id="create_post">
+    <div class="modal fade" id="create_post_modal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create new post</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <textarea type="text" placeholder="Bạn đang nghĩ gì" value="" id="content" rows="10" cols="30"
+                        class="form-control" name="content" required></textarea>
+                    <label for="">Image</label>
+                    <input type="file" accept="image/*" name="image" id="img" class="form-control">
+                    <label for="" class="mt-2">Youtube link</label>
+                    <input type="text" name="youtube_link" id="ytb" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{{!-- sua bai viet --}}
+<form action="" id="edit_post">
+    <div class="modal fade" id="edit_post_modal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sửa bài viết</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="p_id_e" name="id">
+                    <textarea type="text" placeholder="Bạn đang nghĩ gì" value="" id="content_edit" rows="10" cols="30"
+                        class="form-control" name="content" required></textarea>
+                    <label for="">Image</label>
+                    <input type="file" accept="image/*" name="image" id="img_e" class="form-control">
+                    <label for="" class="mt-2">Youtube link</label>
+                    <input type="text" name="youtube_link" id="ytb_edit" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary btn_edit_p" data-dismiss="modal">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{{!-- xoa --}}
+<div class="modal fade" id="delete_post" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xóa bài viết</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bạn có chắc muốn xóa bài viết?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a href="#" type="button" class="btn btn-danger" data-dismiss="modal" id="de_p_b">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- binh luan --}}
+<form action="" method="post" id="f_add_cmt">
+    <div class="modal fade" id="add_cmt" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thêm bình luận</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="id_p_c" name="id">
+                    <textarea type="text" placeholder="Nội dung bình luận" id="c_cmt" rows="10" cols="30"
+                        class="form-control" name="content" required></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Thêm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{{!-- xoa binh luan --}}
+<div class="modal fade" id="dele_cmt" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xóa bình luận</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bạn có chắc muốn xóa bình luận này?
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" id="cmt_i_d">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-danger dlt_cmt" data-dismiss="modal">Xóa</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    create_post();
+    get_post();
+    delete_post();
+    add_comment();
+    delete_comment();
+    edit_post();
+</script>
